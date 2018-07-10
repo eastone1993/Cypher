@@ -1,5 +1,4 @@
 #Persistent
-#Include C:\Users\estone\Desktop\Evan's AHK\Libraries\GUILibrary.ahk 
 #SingleInstance, force 
 
 DetectHiddenWindows, On
