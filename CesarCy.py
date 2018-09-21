@@ -1,4 +1,6 @@
 import string
+import os
+import subprocess
 
 # Caesar/Shift cipher
 def caesar(plaintext, shift):
@@ -18,10 +20,12 @@ def get_key(text):
 
 commonLibrary = list('|ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz .,/<>?1234567890!@$%^&*"#()[]{}+=-')
 commonLibraryIndex = {commonLibrary.index(x):x for x in commonLibrary}
-
+'''
 f = open('InterCom.txt','r')
 text = f.read()
 f.close()
+'''
+text = os.environ.get('INTERCOM')
 
 key = get_key(text)
 keyChar = commonLibraryIndex[key]
@@ -29,7 +33,13 @@ keyChar = commonLibraryIndex[key]
 h = caesar(text, key)
 cypher = h + keyChar
 
+os.environ['INTERCOM'] = cypher
+
+subprocess.call(["C:\Program Files\AutoHotkey\AutoHotkey.exe", "CypherGUI.ahk"])
+
+
+'''
 k = open('InterCom.txt', 'w')
 k.write(cypher)
 k.close()
-
+'''
